@@ -1,7 +1,7 @@
 site_name: Three-Body Decay Monte Carlo
 site_description: Monte Carlo event generation for three-body particle decays with negative weights
-site_author: Your Name
-repo_url: https://github.com/yourusername/three-body-decay
+site_author: Stephen Jiggins
+repo_url: https://github.com/sjiggins/three-body-decay
 repo_name: three-body-decay
 
 theme:
@@ -31,22 +31,22 @@ theme:
     - content.code.copy
     - content.code.annotate
 
-plugins:
-  - search
-  - mkdocstrings:
-      handlers:
-        python:
-          options:
-            docstring_style: numpy
-            show_source: true
-            show_root_heading: true
-            show_root_full_path: false
-            show_symbol_type_heading: true
-            show_symbol_type_toc: true
-            members_order: source
-            group_by_category: true
-            show_signature_annotations: true
-            separate_signature: true
+#plugins:
+#  - search
+#  - mkdocstrings:
+#      handlers:
+#        python:
+#          options:
+#            docstring_style: numpy
+#            show_source: true
+#            show_root_heading: true
+#            show_root_full_path: false
+#            show_symbol_type_heading: true
+#            show_symbol_type_toc: true
+#            members_order: source
+#            group_by_category: true
+#            show_signature_annotations: true
+#            separate_signature: true
 
 markdown_extensions:
   - admonition
