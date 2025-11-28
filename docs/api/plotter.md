@@ -323,7 +323,7 @@ for config in configs:
 For large datasets:
 
 ```python
-# ❌ Memory intensive
+# Memory intensive
 dalitz(s12, s23, weights=weights, bins=(1000, 1000))
 
 # ✓ Memory efficient
@@ -364,14 +364,14 @@ plot_dalitz_density(..., log_scale=True)
 ### Plot Not Showing
 
 ```python
-# ❌ Forgot to show plot
+# Forgot to show plot
 plot_dalitz_density(...)
 
-# ✓ Add plt.show() if not saving
+# Add plt.show() if not saving
 plot_dalitz_density(..., output_path=None)
 plt.show()
 
-# ✓ Or save to file
+# Or save to file
 plot_dalitz_density(..., output_path='plot.png')
 ```
 
@@ -380,7 +380,7 @@ plot_dalitz_density(..., output_path='plot.png')
 ```python
 # Check if weights are all zero
 if np.allclose(weights, 0):
-    print("⚠️ All weights are zero!")
+    print("️ All weights are zero!")
 
 # Check if data is in range
 print(f"s12 range: [{s12.min():.3f}, {s12.max():.3f}]")

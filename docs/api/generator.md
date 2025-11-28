@@ -189,7 +189,7 @@ s13 = (p1 + p3)²
 If VEGAS only generates a few events:
 
 ```python
-# ❌ Bad: Default parameters with complex resonances
+# Bad: Default parameters with complex resonances
 events, _, _, _ = weighted_generation(
     M=1.864, m1=0.139, m2=0.139, m3=0.139,
     resonances=complex_resonances,
@@ -211,7 +211,7 @@ events, _, _, _ = weighted_generation(
 If you see `sum(weights) < 0`:
 
 ```python
-# ⚠️ Unphysical configuration
+# Unphysical configuration
 resonances = [
     {'mass': 0.770, 'width': 0.150, 'weight': 1.0,
      'channel': 's12', 'phase': 0.0, 'sign': +1},
