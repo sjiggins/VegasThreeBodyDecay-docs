@@ -1,42 +1,38 @@
 # Physics Background
 
-A comprehensive guide to the physics implemented in the three-body decay package.
+A guide to the three body decay physics implemented in this package.
 
 ## Three-Body Decay Kinematics
 
 ### Decay Process
 
-We consider the decay of a parent particle M into three daughters:
+We consider the decay of a parent particle $M$ into three daughters:
 
 $$
 M \to m_1 + m_2 + m_3
 $$
 
-In the rest frame of M, the decay is characterized by:
+In the rest frame of $M$, the decay is characterized by:
 
 - Parent mass: $M$
 - Daughter masses: $m_1, m_2, m_3$
 - Total energy-momentum conservation
 
-### Dalitz Variables
+### Dalitz Variables & Kinematic Constraints
 
-The kinematics are described by invariant mass squared variables:
+The kinematics and corresponding energy-momentum conservation, are described by the squared invariant mass of the bi-particle systems spanned by the three final state daughter particles:
 
 $$
 s_{ij} = (p_i + p_j)^2 = (E_i + E_j)^2 - (\vec{p}_i + \vec{p}_j)^2
 $$
 
-where $i, j \in \{1, 2, 3\}$ and $i \neq j$.
-
-### Kinematic Constraint
-
-The three Dalitz variables are not independent:
+where $i, j \in \{1, 2, 3\}$ and $i \neq j$. These three 'dalitz variables' are not independent:
 
 $$
 s_{12} + s_{23} + s_{13} = M^2 + m_1^2 + m_2^2 + m_3^2
 $$
 
-This reduces the phase space from 3D to 2D. We typically use $(s_{12}, s_{23})$ as independent variables.
+As a result this reduces the phase space from a 3-dimensonal problem (3D) to a \2-dimensional (2D) one. Specifically, the entire kinematic behaviour is defined by two independent dalitz variables, $(s_{ij}, s_{km})$, with the third being defined by the above kinematic constraint. In this software package, we consider the $(s_{12}, s_{23})$ pair as independent variables, meaning all Monte Carlo event generation is parameterised in this basis.
 
 ### Dalitz Plot Boundaries
 
@@ -52,13 +48,13 @@ $$
 s_{23}^{\min/\max} = m_2^2 + m_3^2 + \frac{1}{2s_{12}} \left[ (s_{12} + m_2^2 - m_1^2)(M^2 + m_3^2 - s_{12}) \mp \lambda^{1/2}(s_{12}, m_1^2, m_2^2) \lambda^{1/2}(M^2, s_{12}, m_3^2) \right]
 $$
 
-The Källén function is defined as:
+The Kallen function is defined as:
 
 $$
 \lambda(a, b, c) = a^2 + b^2 + c^2 - 2ab - 2ac - 2bc
 $$
 
-### Overall Boundaries
+### Dalitz Variable Boundaries
 
 The $s_{12}$ variable has fixed limits:
 
@@ -81,16 +77,16 @@ Direct three-body matrix elements are complex. The **isobar model** simplifies b
 The total amplitude is a coherent sum:
 
 $$
-M_{\text{total}}(s_{12}, s_{23}, s_{13}) = \sum_i c_i e^{i\phi_i} \, \text{BW}_i(s_i) \, F_i(s_i)
+M_{\text{total}}(s_{12}, s_{23}, s_{13}) = \sum_{i} c_{i} e^{i\phi_{i}} \, \text{BW}_{i}(s_{i}) \, F_i(s_{i})
 $$
 
 where:
 
-- $c_i$ = coupling constant (strength)
-- $\phi_i$ = relative phase
+- $c_{i}$ = coupling constant (strength)
+- $\phi_{i}$ = relative phase
 - $\text{BW}_i(s)$ = Breit-Wigner resonance function
-- $F_i(s)$ = form factor (often approximated as 1)
-- $s_i$ = invariant mass squared in the appropriate channel
+- $F_{i}(s)$ = form factor (often approximated as 1)
+- $s_{i}$ = invariant mass squared in the appropriate channel
 
 ### Breit-Wigner Function
 
@@ -108,6 +104,7 @@ Properties:
 
 !!! note "Alternative Parametrizations"
     The package uses this simple form. More sophisticated models use energy-dependent widths: $\Gamma(s) = \Gamma_0 \left(\frac{p(s)}{p(m_0^2)}\right)^{2L+1}$ where $L$ is orbital angular momentum.
+    However, angular and spin considerations have not been included in this packe - yet. 
 
 ### Observable: Squared Amplitude
 
@@ -457,22 +454,4 @@ where $\gamma = 1/\sqrt{1 - |\vec{\beta}|^2}$.
 - **Negative weights**: Events with negative Monte Carlo weights
 - **Signed amplitude**: $|M_+|^2 - |M_-|^2$ allowing local negativity
 - **Phase space**: Allowed kinematic region
-- **Källén function**: $\lambda(a,b,c)$ used in kinematics
-
-## Further Study
-
-### Recommended Order
-
-1. **Basic QM**: Interference and amplitude addition
-2. **Particle Physics**: Resonances and decays
-3. **Monte Carlo**: VEGAS and importance sampling
-4. **Dalitz Plots**: Three-body kinematics
-5. **Advanced**: Negative weights and signed amplitudes
-
-### Exercises
-
-1. Derive the $s_{23}$ limits from energy-momentum conservation
-2. Compute $|M_1 + M_2|^2$ showing interference term explicitly
-3. Verify that $s_{12} + s_{23} + s_{13} = M^2 + \sum m_i^2$
-4. Show that $\Gamma > 0$ implies probability conservation
-5. Implement energy-dependent Breit-Wigner width
+- **Kallen function**: $\lambda(a,b,c)$ used in kinematics
